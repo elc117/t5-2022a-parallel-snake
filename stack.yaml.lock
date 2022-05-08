@@ -3,7 +3,14 @@
 # For more information, please see the documentation at:
 #   https://docs.haskellstack.org/en/stable/lock_files
 
-packages: []
+packages:
+- completed:
+    hackage: FunGEn-1.1.1@sha256:26c8b2486abaddfa67018a6c4de3787a2f4d63ca26c62c1690a5838a8d62ceb5,3921
+    pantry-tree:
+      size: 2896
+      sha256: c20d9ac894aef7b61a26f7298b336384a5c1fe8274eb70fe5ee0ea7fdc40c762
+  original:
+    hackage: FunGEn-1.1.1@sha256:26c8b2486abaddfa67018a6c4de3787a2f4d63ca26c62c1690a5838a8d62ceb5,3921
 snapshots:
 - completed:
     size: 619093

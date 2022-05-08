@@ -21,12 +21,15 @@ description:         Please see the README on GitHub at <https://github.com/Juba
 
 dependencies:
 - base >= 4.7 && < 5
+- FunGEn >= 1.1
+- OpenGL
+
 
 library:
   source-dirs: src
 
 executables:
-  snake-haskell-exe:
+  snake-haskell:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
