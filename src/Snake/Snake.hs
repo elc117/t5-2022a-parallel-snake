@@ -22,6 +22,10 @@ move snake direction food =
                     where grownSnake = grow snake nextPoint
         Nothing -> snake
 
+isDead :: Snake -> [GridPoint] -> Bool
+isDead [] _ = True
+isDead (head:tail) invalidRegions = (head `elem` tail) || (head `elem` invalidRegions) 
+
 grow :: Snake -> GridPoint -> Snake
 grow snake nextPoint = nextPoint : snake
 
