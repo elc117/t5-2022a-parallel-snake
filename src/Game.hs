@@ -1,18 +1,13 @@
 module Game (run) where
 
-import Snake.Snake
+import Snake.Snake ( isDead, move, speed, speedBoostModifier )
 import Snake.World
-import Input
-import Graphics
-import Text.Printf
-import Graphics.Gloss.Interface.Pure.Game
-import System.Random
+import Input ( handleInputs )
+import Graphics ( screen, worldToPicture )
+import Graphics.Gloss.Interface.Pure.Game ( white, play )
 
 run :: IO ()
-run = main
-
-main :: IO()
-main =
+run =
   let world = initialWorld in play screen white 60 world worldToPicture handleInputs mainLoop
 
 mainLoop :: Float -> World -> World
@@ -30,7 +25,7 @@ runningState deltaTime world =
   if nextGameOver
     then world{
       gameOver = True
-      }
+    }
     else world{
       snake = nextSnake,
       timeSinceLastMovement = nextTimeSinceLastMovement,
@@ -38,7 +33,7 @@ runningState deltaTime world =
       randomGenerator = nextGenerator,
       lastMovedDirection = nextLastMovedDirection,
       totalTime = totalTime world + deltaTime
-      }
+    }
   where
     moveNow = shouldMoveNow world
     nextSnake =
@@ -62,5 +57,8 @@ runningState deltaTime world =
 shouldMoveNow :: World -> Bool
 shouldMoveNow world = 
   if speedBoost world
-        then timeSinceLastMovement world > (timePerMovement * speedBoostModifier)
-        else timeSinceLastMovement world > timePerMovement
+    then timeSinceLastMovement world > (timePerMovement / speedBoostModifier)
+    else timeSinceLastMovement world > timePerMovement
+  where
+    timePerMovement = 1 / actualSpeed
+    actualSpeed = speed + fromIntegral (length (snake world) `div` 3)

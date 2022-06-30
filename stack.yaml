@@ -35,7 +35,6 @@ packages:
 # forks / in-progress versions pinned to a git hash. For example:
 #
 extra-deps:
-- FunGEn-1.1.1@sha256:26c8b2486abaddfa67018a6c4de3787a2f4d63ca26c62c1690a5838a8d62ceb5,3921
 - GLUT-2.7.0.16@sha256:a7da60bef0d06eb501a2abd0d5068a89fa2c2daf5fee4b607df62395543ba6b0,24054
 - OpenGL-3.0.3.0@sha256:b0f2686cfecfe3451b8a6680315a28c6f47d0b1fd70d2cb50f14d9fe3ad714da,8052
 - base-compat-0.12.1@sha256:20e50848d9dfee1523fafe8950060b04fae43d402c15553da5c7cacd116f7846,6960

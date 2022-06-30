@@ -1,9 +1,9 @@
 module Graphics where
 
-import Snake.Snake
+import Snake.Snake ( GridPoint )
 import Snake.World
 import Graphics.Gloss.Interface.Pure.Game
-import Text.Printf
+import Text.Printf ( printf )
 
 screen :: Display
 screen = InWindow "Snake" screenBounds (0, 0)
@@ -20,7 +20,7 @@ gameOverPicture world = Translate (fromIntegral (-(fst screenBounds)) * 0.5 + 10
 runningGamePicture :: World -> Picture
 runningGamePicture world = Pictures (snakePicture ++ [foodPicture])
   where
-    snakePicture = Prelude.map snakePointToPicture (snake world)
+    snakePicture = map snakePointToPicture (snake world)
     foodPicture = foodToPicture (food world)
 
 snakePointToPicture :: GridPoint -> Picture

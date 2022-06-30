@@ -1,9 +1,9 @@
 module Input where
 
-import Snake.Snake
+import Snake.Snake ( Direction(RIGHT, UP, DOWN, LEFT) )
 import Snake.World
 import Graphics.Gloss.Interface.Pure.Game
-import Data.Map
+import Data.Map ( fromList, lookup )
 
 inputs = fromList [
   ('w', \world -> if lastMovedDirection world == DOWN then world else world{currentDirection = UP}),

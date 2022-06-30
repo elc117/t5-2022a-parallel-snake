@@ -54,3 +54,9 @@ toPoint direction
     | direction == UP = (0, 1)
     | direction == DOWN = (0, -1)
     | otherwise = error "Invalid Direction!"
+
+speed :: Float
+speed = 4
+
+speedBoostModifier :: Float
+speedBoostModifier = 2

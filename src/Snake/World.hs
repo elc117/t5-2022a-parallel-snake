@@ -1,7 +1,6 @@
 module Snake.World where
-import Snake.Snake
-import System.Random
-import GHC.Float
+import Snake.Snake ( initSnake, Direction(UP), Food, GridPoint, Snake )
+import System.Random ( uniformR, mkStdGen, StdGen )
 
 data World = World {snake :: Snake,
                     currentDirection :: Direction,
@@ -21,23 +20,17 @@ initialWorld = World{
     timeSinceLastMovement = 0,
     totalTime = 0,
     food = (-1, -1),
-    randomGenerator = mkStdGen 27,
+    randomGenerator = mkStdGen 14,
     gameOver  = False,
     speedBoost = False
   }
 
 
 gridSize :: (Int, Int)
-gridSize = (10, 10)
+gridSize = (20, 20)
 
 screenBounds :: (Int, Int)
-screenBounds = (500, 500)
-
-timePerMovement :: Float
-timePerMovement = 0.25
-
-speedBoostModifier :: Float
-speedBoostModifier = 0.5
+screenBounds = (640, 640)
 
 tileSize :: (Float, Float)
 tileSize = (fromIntegral w / fromIntegral gw, fromIntegral  w / fromIntegral gh)
@@ -76,4 +69,4 @@ score :: World -> Float
 score world =
   if totalTime world < 1
     then 0
-    else (1000 * powerFloat (fromIntegral (length (snake world))) 2) / totalTime world
+    else (1000 * fromIntegral (length (snake world))) - totalTime world
