@@ -1,6 +1,6 @@
-name:                snake-haskell
+name:                parallel-snake
 version:             1.0.0.0
-github:              "Jubarte27/snake-haskell"
+github:              "elc117/t5-2022a-parallel-snake"
 author:              "Matheus Machado"
 maintainer:          "matheusmazar@gmail.com"
 copyright:           "2022 Matheus Machado"
@@ -8,20 +8,21 @@ copyright:           "2022 Matheus Machado"
 extra-source-files:
 - README.md
 
-description:         Please see the README on GitHub at <https://github.com/Jubarte27/snake-haskell#readme>
+description:         Please see the README on GitHub at <https://github.com/elc117/t5-2022a-parallel-snake#readme>
 
 dependencies:
 - base >= 4.7 && < 5
 - gloss
 - random
 - containers
+- parallel
 
 
 library:
   source-dirs: src
 
 executables:
-  snake-haskell:
+  parallel-snake:
     main:                Main.hs
     source-dirs:         app
     ghc-options:
@@ -29,4 +30,4 @@ executables:
     - -rtsopts
     - -with-rtsopts=-N
     dependencies:
-    - snake-haskell
+    - parallel-snake

@@ -52,6 +52,7 @@ extra-deps:
 - gloss-rendering-1.13.1.2@sha256:02c89f1f4fe76773847aa321204d2b41053f2b2b74bb8c9f2c5050bf833823f4,1647
 - binary-0.8.9.0@sha256:9cac9a1d86bfa3e7f75cc8bffaa256f3967ebb6d76f67a42f9679384c5c5e18a,6523
 - text-1.2.5.0@sha256:791f0f6c97ed96113f17ab520cf0efe1a3a4f883a8c85910a5660567c8241c40,7895
+- parallel-3.2.2.0@sha256:19ff631f3a26ee7cf0603e2b80fc375d77d3f350ae460ae72fe4cf5da665c90b,1821
 # - acme-missiles-0.3
 # - git: https://github.com/commercialhaskell/stack.git
 #   commit: e7b331f14bcffb8367cd58fbfc8b40ec7642100a

@@ -3,12 +3,18 @@ module Game (run) where
 import Snake.Snake ( isDead, move, speed, speedBoostModifier )
 import Snake.World
 import Input ( handleInputs )
-import Graphics ( screen, worldToPicture )
+import Graphics ( screen, worldToPicture, multiWorldToPicture )
 import Graphics.Gloss.Interface.Pure.Game ( white, play )
+import Graphics.Gloss.Data.Display (Display(FullScreen))
+import Snake.MultiWorld (MultiWorld, initialMultiWorld)
+import Control.Parallel.Strategies
 
 run :: IO ()
 run =
-  let world = initialWorld in play screen white 60 world worldToPicture handleInputs mainLoop
+  let world = initialMultiWorld in play screen white 60 world multiWorldToPicture handleInputs multiWorldMainLoop
+
+multiWorldMainLoop :: Float -> MultiWorld -> MultiWorld
+multiWorldMainLoop deltaTime multiWorld = parMap rpar (\world -> mainLoop deltaTime world) multiWorld
 
 mainLoop :: Float -> World -> World
 mainLoop deltaTime world =

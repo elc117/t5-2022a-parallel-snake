@@ -1,6 +1,7 @@
 module Snake.World where
 import Snake.Snake ( initSnake, Direction(UP), Food, GridPoint, Snake )
 import System.Random ( uniformR, mkStdGen, StdGen )
+import Graphics.Gloss.Data.Color
 
 data World = World {snake :: Snake,
                     currentDirection :: Direction,
@@ -10,33 +11,26 @@ data World = World {snake :: Snake,
                     randomGenerator :: StdGen,
                     speedBoost :: Bool,
                     gameOver :: Bool,
-                    food :: Food}
+                    food :: Food,
+                    seed :: Int}
 
-initialWorld :: World
-initialWorld = World{
+initialWorld :: Int -> World
+initialWorld seed = World{
     snake = initSnake,
     currentDirection = UP,
     lastMovedDirection = UP,
     timeSinceLastMovement = 0,
     totalTime = 0,
     food = (-1, -1),
-    randomGenerator = mkStdGen 14,
+    randomGenerator = mkStdGen seed,
     gameOver  = False,
-    speedBoost = False
+    speedBoost = False,
+    seed = seed
   }
 
 
 gridSize :: (Int, Int)
 gridSize = (20, 20)
-
-screenBounds :: (Int, Int)
-screenBounds = (640, 640)
-
-tileSize :: (Float, Float)
-tileSize = (fromIntegral w / fromIntegral gw, fromIntegral  w / fromIntegral gh)
-  where
-    (w, h) = screenBounds
-    (gw, gh) = gridSize
 
 worldBounds :: (GridPoint, GridPoint)
 worldBounds = (leftBottom, rightTop)
